@@ -1,0 +1,257 @@
+/* =========================================
+   ASSESSMENT PAGE
+   ========================================= */
+
+.assessment-page {
+  min-height: 100vh;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+  text-align: center;
+}
+
+.assessment-page h1 {
+  color: #2563eb;
+  margin-bottom: 15px;
+  font-size: 34px;
+}
+
+.assessment-page > p {
+  color: #6b7280;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* =========================================
+   QUESTION CARD
+   ========================================= */
+
+.question-card {
+  max-width: 600px;
+  margin: 0 auto 25px;
+  padding: 30px;
+  background: white;
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid #2563eb;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.10);
+  text-align: left;
+}
+
+.question-card h2 {
+  margin-bottom: 20px;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.question-card p {
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+.question-card label {
+  display: block;
+  padding: 14px;
+  margin-bottom: 10px;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #f8fafc;
+  transition: 0.2s;
+}
+
+.question-card label:hover {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  transform: translateX(3px);
+}
+
+.question-card input {
+  margin-right: 10px;
+  accent-color: #2563eb;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+
+.assessment-page button {
+  margin: 5px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.assessment-page button:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+}
+
+.assessment-page button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================
+   RECOMMENDATION CARD
+   ========================================= */
+
+.recommendation-card {
+  max-width: 700px;
+  margin: 30px auto 0;
+  padding: 35px;
+  background: white;
+  border: 1px solid #bbf7d0;
+  border-top: 5px solid #16a34a;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(22, 163, 74, 0.10);
+  text-align: center;
+}
+
+.recommendation-icon {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.recommendation-card h2 {
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.recommendation-card h3 {
+  color: #2563eb;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.recommendation-card p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.recommendation-card button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.recommendation-card button:hover {
+  background: #16a34a;
+}
+
+/* =========================================
+   CAREER DETAILS
+   ========================================= */
+
+.career-details {
+  margin-top: 25px;
+  padding: 25px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.career-details h3 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #16a34a;
+}
+
+.career-details h3:first-child {
+  margin-top: 0;
+}
+
+.career-details p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* =========================================
+   MOBILE / TABLET
+   ========================================= */
+
+@media (max-width: 800px) {
+  .assessment-page {
+    padding: 40px 5%;
+  }
+
+  .assessment-page h1 {
+    font-size: 30px;
+  }
+
+  .question-card {
+    width: 100%;
+    padding: 25px 20px;
+  }
+
+  .recommendation-card {
+    padding: 28px 20px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 500px) {
+  .assessment-page {
+    padding: 30px 4%;
+  }
+
+  .assessment-page h1 {
+    font-size: 26px;
+  }
+
+  .assessment-page > p {
+    font-size: 14px;
+  }
+
+  .question-card {
+    padding: 20px 16px;
+    border-radius: 13px;
+  }
+
+  .question-card h2 {
+    font-size: 19px;
+  }
+
+  .question-card label {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .assessment-page button {
+    width: 100%;
+    margin: 7px 0;
+  }
+
+  .recommendation-card {
+    padding: 25px 16px;
+  }
+
+  .recommendation-card h2 {
+    font-size: 21px;
+  }
+
+  .recommendation-card h3 {
+    font-size: 21px;
+  }
+
+  .career-details {
+    padding: 20px 16px;
+  }
+}

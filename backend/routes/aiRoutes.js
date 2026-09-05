@@ -4,7 +4,7 @@ const {
   getCareerRecommendation,
   getLearningPath,
   getSkillGapAnalysis,
-} = require("../controllers/aicontroller");
+} = require("../controllers/aiController");
 
 const router = express.Router();
 

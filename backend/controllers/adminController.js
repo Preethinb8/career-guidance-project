@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const Assessment = require("../models/assessment");
+const Assessment = require("../models/Assessment");
 const Progress = require("../models/progress");
 
 // GET ALL USERS
@@ -100,7 +100,9 @@ const getAnalyticsReports = async (req, res) => {
         {
           $group: {
             _id: "$personalityType",
-            count: { $sum: 1 }
+            count: {
+              $sum: 1
+            }
           }
         },
         {
@@ -120,7 +122,9 @@ const getAnalyticsReports = async (req, res) => {
       );
 
     const users = await User.find({
-      _id: { $in: progressUserIds }
+      _id: {
+        $in: progressUserIds
+      }
     }).select("name email");
 
     const userMap = new Map(
@@ -223,8 +227,7 @@ const getAnalyticsReports = async (req, res) => {
             totalSkills,
 
           badges:
-            (progress.badges || [])
-              .length
+            (progress.badges || []).length
         };
       });
 

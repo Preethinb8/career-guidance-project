@@ -330,7 +330,10 @@ router.get('/:userId', authMiddleware, async (req, res) => {
       recommendations
     })
   } catch (error) {
-    console.error('Recommendation error:', error)
+    console.error(
+      'Recommendation error:',
+      error
+    )
 
     res.status(500).json({
       message: 'Failed to generate recommendations'

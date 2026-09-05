@@ -157,6 +157,7 @@ function Assessment() {
   const [saving, setSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState('')
   const [personalityType, setPersonalityType] = useState('')
+  const [aiRecommendation, setAiRecommendation] = useState('')
 
   const handleAnswer = async (answer) => {
     const updatedAnswers = [...answers]
@@ -178,22 +179,22 @@ function Assessment() {
     setSaving(true)
     setSaveMessage('Saving your assessment...')
 
+    const token = localStorage.getItem('token')
+
+    if (!token) {
+      console.error('Token not found')
+
+      setSaveMessage(
+        'Login session not found. Please login again.'
+      )
+
+      setSaving(false)
+      setCompleted(true)
+
+      return
+    }
+
     try {
-      const token = localStorage.getItem('token')
-
-      if (!token) {
-        console.error('Token not found')
-
-        setSaveMessage(
-          'Login session not found. Please login again.'
-        )
-
-        setSaving(false)
-        setCompleted(true)
-
-        return
-      }
-
       const response = await fetch(
         'http://localhost:5000/api/assessment',
         {
@@ -250,6 +251,44 @@ function Assessment() {
       )
     }
 
+    try {
+      const aiResponse = await fetch(
+        'http://localhost:5000/api/ai/career-recommendation',
+        {
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+
+          body: JSON.stringify({
+            skills: updatedAnswers,
+            interests: updatedAnswers,
+            assessment: `Personality Type: ${detectedPersonality}`
+          })
+        }
+      )
+
+      const aiData = await aiResponse.json()
+
+      if (aiResponse.ok) {
+        setAiRecommendation(
+          aiData.recommendation
+        )
+      } else {
+        console.error(
+          'AI recommendation failed:',
+          aiData
+        )
+      }
+    } catch (error) {
+      console.error(
+        'AI recommendation error:',
+        error
+      )
+    }
+
     setSaving(false)
     setCompleted(true)
   }
@@ -261,6 +300,7 @@ function Assessment() {
     setSaving(false)
     setSaveMessage('')
     setPersonalityType('')
+    setAiRecommendation('')
   }
 
   if (completed) {
@@ -298,6 +338,16 @@ function Assessment() {
           responses and represents your strongest
           career-related personality characteristic.
         </p>
+
+        {aiRecommendation && (
+          <>
+            <h2>AI Career Recommendation</h2>
+
+            <p>
+              {aiRecommendation}
+            </p>
+          </>
+        )}
 
         <h2>Your Answers</h2>
 

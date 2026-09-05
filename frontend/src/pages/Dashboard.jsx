@@ -601,8 +601,8 @@ function Dashboard() {
 
           <div className="progress-item">
             <span>Learning Roadmap</span>
-            <strong className="status-phase">
-              🔜 Phase 2
+            <strong className="status-complete">
+              ✅ Available
             </strong>
           </div>
 

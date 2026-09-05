@@ -1,6 +1,7 @@
 import './App.css'
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ForgotPassword from './pages/ForgotPassword'
@@ -10,6 +11,13 @@ import Profile from './pages/Profile'
 import Recommendations from './pages/Recommendations'
 import Dashboard from './pages/Dashboard'
 import SkillAssessment from './pages/SkillAssessment'
+import AICareerGuidance from './pages/AICareerGuidance'
+import LearningPath from './pages/LearningPath'
+import SkillGapAnalysis from './pages/SkillGapAnalysis'
+import Chatbot from './pages/Chatbot'
+import ProgressTracking from './pages/ProgressTracking'
+import Analytics from './pages/Analytics'
+import Admin from './pages/Admin'
 import ProtectedRoute from './ProtectedRoute'
 
 function Home() {
@@ -30,8 +38,16 @@ function Home() {
 
         <nav>
           <Link to="/">Home</Link>
+
           <a href="#careers">Careers</a>
+
           <a href="#about">About</a>
+
+          {/* ADMIN LINK */}
+          <Link to="/admin">Admin</Link>
+
+          {/* ANALYTICS LINK */}
+          <Link to="/analytics">Analytics</Link>
 
           {localStorage.getItem('user') ? (
             <button onClick={handleLogout}>
@@ -47,7 +63,7 @@ function Home() {
 
       <main>
 
-        {/* HERO */}
+        {/* HERO SECTION */}
         <section className="hero" id="home">
 
           <div className="hero-content">
@@ -107,10 +123,7 @@ function Home() {
         </section>
 
         {/* FEATURES */}
-        <section
-          className="features"
-          id="careers"
-        >
+        <section className="features" id="careers">
 
           <h2>
             How CareerGuide AI Helps You
@@ -150,7 +163,7 @@ function Home() {
               </p>
             </Link>
 
-            {/* AI RECOMMENDATIONS */}
+            {/* CAREER RECOMMENDATIONS */}
             <Link
               to="/recommendations"
               className="feature-card"
@@ -158,11 +171,94 @@ function Home() {
               <div>🤖</div>
 
               <h3>
-                AI Recommendations
+                Career Recommendations
               </h3>
 
               <p>
                 Get personalized career suggestions based on your profile.
+              </p>
+            </Link>
+
+            {/* AI CAREER GUIDANCE */}
+            <Link
+              to="/ai-career-guidance"
+              className="feature-card"
+            >
+              <div>🧠</div>
+
+              <h3>
+                AI Career Guidance
+              </h3>
+
+              <p>
+                Get personalized AI-powered career guidance and insights.
+              </p>
+            </Link>
+
+            {/* LEARNING PATH */}
+            <Link
+              to="/learning-path"
+              className="feature-card"
+            >
+              <div>📚</div>
+
+              <h3>
+                Learning Path
+              </h3>
+
+              <p>
+                Get a personalized learning roadmap for your career goal.
+              </p>
+            </Link>
+
+            {/* SKILL GAP ANALYSIS */}
+            <Link
+              to="/skill-gap-analysis"
+              className="feature-card"
+            >
+              <div>📊</div>
+
+              <h3>
+                Skill Gap Analysis
+              </h3>
+
+              <p>
+                Compare your current skills with the skills required
+                for your career goal.
+              </p>
+            </Link>
+
+            {/* PROGRESS TRACKING */}
+            <Link
+              to="/progress"
+              className="feature-card"
+            >
+              <div>📈</div>
+
+              <h3>
+                Progress Tracking
+              </h3>
+
+              <p>
+                Track your learning milestones, completed courses,
+                skill progress, and achievements.
+              </p>
+            </Link>
+
+            {/* AI CAREER CHATBOT */}
+            <Link
+              to="/chatbot"
+              className="feature-card"
+            >
+              <div>💬</div>
+
+              <h3>
+                AI Career Chatbot
+              </h3>
+
+              <p>
+                Ask career questions and get guidance for learning,
+                resumes, and interviews.
               </p>
             </Link>
 
@@ -196,7 +292,6 @@ function Home() {
 
           <div className="career-path-container">
 
-            {/* SOFTWARE DEVELOPER */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -214,7 +309,6 @@ function Home() {
               </p>
             </div>
 
-            {/* DATA ANALYST */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -232,7 +326,6 @@ function Home() {
               </p>
             </div>
 
-            {/* UI/UX DESIGNER */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -250,7 +343,6 @@ function Home() {
               </p>
             </div>
 
-            {/* DIGITAL MARKETER */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -268,7 +360,6 @@ function Home() {
               </p>
             </div>
 
-            {/* BUSINESS ANALYST */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -286,7 +377,6 @@ function Home() {
               </p>
             </div>
 
-            {/* CYBERSECURITY ANALYST */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -304,7 +394,6 @@ function Home() {
               </p>
             </div>
 
-            {/* AI/ML ENGINEER */}
             <div
               className="career-path-card"
               onClick={() =>
@@ -318,7 +407,8 @@ function Home() {
               </h3>
 
               <p>
-                Build intelligent systems using artificial intelligence and machine learning.
+                Build intelligent systems using artificial intelligence
+                and machine learning.
               </p>
             </div>
 
@@ -335,9 +425,7 @@ function Home() {
 
               <button
                 className="close-btn"
-                onClick={() =>
-                  setSelectedCareer('')
-                }
+                onClick={() => setSelectedCareer('')}
               >
                 ×
               </button>
@@ -346,21 +434,16 @@ function Home() {
                 {selectedCareer}
               </h2>
 
-              {/* SOFTWARE DEVELOPER */}
               {selectedCareer === 'Software Developer' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
                     Programming, problem-solving, logical thinking,
                     teamwork, and debugging.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     HTML, CSS, JavaScript, Python, databases,
@@ -369,21 +452,16 @@ function Home() {
                 </>
               )}
 
-              {/* DATA ANALYST */}
               {selectedCareer === 'Data Analyst' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
                     Mathematics, statistics, analytical thinking,
                     problem-solving, and data visualization.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     Excel, SQL, Python, statistics, data visualization,
@@ -392,21 +470,16 @@ function Home() {
                 </>
               )}
 
-              {/* UI/UX DESIGNER */}
               {selectedCareer === 'UI/UX Designer' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
                     Creativity, visual design, user research,
                     communication, and problem-solving.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     Design principles, wireframing, prototyping,
@@ -415,21 +488,16 @@ function Home() {
                 </>
               )}
 
-              {/* DIGITAL MARKETER */}
               {selectedCareer === 'Digital Marketer' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
                     Communication, creativity, analytical thinking,
                     content creation, and marketing skills.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     Digital marketing, SEO, social media marketing,
@@ -438,67 +506,56 @@ function Home() {
                 </>
               )}
 
-              {/* BUSINESS ANALYST */}
               {selectedCareer === 'Business Analyst' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
                     Analytical thinking, communication, problem-solving,
                     business knowledge, and decision-making.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     Business analysis, Excel, SQL, data analysis,
-                    requirements gathering, process modeling, and documentation.
+                    requirements gathering, process modeling,
+                    and documentation.
                   </p>
                 </>
               )}
 
-              {/* CYBERSECURITY ANALYST */}
               {selectedCareer === 'Cybersecurity Analyst' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
-                    Problem-solving, networking knowledge, analytical thinking,
-                    attention to detail, and security awareness.
+                    Problem-solving, networking knowledge,
+                    analytical thinking, attention to detail,
+                    and security awareness.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     Computer networks, Linux, cybersecurity fundamentals,
-                    ethical security practices, threat analysis, and security tools.
+                    ethical security practices, threat analysis,
+                    and security tools.
                   </p>
                 </>
               )}
 
-              {/* AI/ML ENGINEER */}
               {selectedCareer === 'AI/ML Engineer' && (
                 <>
-                  <h3>
-                    🛠️ Important Skills
-                  </h3>
+                  <h3>🛠️ Important Skills</h3>
 
                   <p>
-                    Mathematics, statistics, programming, analytical thinking,
-                    problem-solving, and machine learning concepts.
+                    Mathematics, statistics, programming,
+                    analytical thinking, problem-solving,
+                    and machine learning concepts.
                   </p>
 
-                  <h3>
-                    📚 What to Learn
-                  </h3>
+                  <h3>📚 What to Learn</h3>
 
                   <p>
                     Python, mathematics, statistics, machine learning,
@@ -509,9 +566,7 @@ function Home() {
 
               <button
                 className="primary-btn"
-                onClick={() =>
-                  setSelectedCareer('')
-                }
+                onClick={() => setSelectedCareer('')}
               >
                 Close
               </button>
@@ -538,18 +593,18 @@ function Home() {
 }
 
 function App() {
-
   return (
-
     <BrowserRouter>
 
       <Routes>
 
+        {/* HOME */}
         <Route
           path="/"
           element={<Home />}
         />
 
+        {/* AUTH */}
         <Route
           path="/login"
           element={<Login />}
@@ -570,7 +625,7 @@ function App() {
           element={<ResetPassword />}
         />
 
-        {/* CAREER ASSESSMENT */}
+        {/* PHASE 1 */}
         <Route
           path="/assessment"
           element={
@@ -580,7 +635,6 @@ function App() {
           }
         />
 
-        {/* PROFILE */}
         <Route
           path="/profile"
           element={
@@ -590,7 +644,6 @@ function App() {
           }
         />
 
-        {/* RECOMMENDATIONS */}
         <Route
           path="/recommendations"
           element={
@@ -600,7 +653,6 @@ function App() {
           }
         />
 
-        {/* DASHBOARD */}
         <Route
           path="/dashboard"
           element={
@@ -610,12 +662,75 @@ function App() {
           }
         />
 
-        {/* SKILL ASSESSMENT */}
         <Route
           path="/skill-assessment"
           element={
             <ProtectedRoute>
               <SkillAssessment />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* PHASE 2 */}
+        <Route
+          path="/ai-career-guidance"
+          element={
+            <ProtectedRoute>
+              <AICareerGuidance />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/learning-path"
+          element={
+            <ProtectedRoute>
+              <LearningPath />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/skill-gap-analysis"
+          element={
+            <ProtectedRoute>
+              <SkillGapAnalysis />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <Chatbot />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/progress"
+          element={
+            <ProtectedRoute>
+              <ProgressTracking />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/analytics"
+          element={
+            <ProtectedRoute>
+              <Analytics />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Admin />
             </ProtectedRoute>
           }
         />

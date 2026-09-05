@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 const router = express.Router()
+
 console.log('AUTH ROUTES LOADED - FORGOT PASSWORD INCLUDED')
 
 // Register
@@ -38,7 +39,8 @@ router.post('/register', async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role
       }
     })
   } catch (error) {
@@ -76,7 +78,8 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign(
       {
         id: user._id,
-        email: user.email
+        email: user.email,
+        role: user.role
       },
       process.env.JWT_SECRET || 'career-guide-secret',
       {
@@ -90,7 +93,8 @@ router.post('/login', async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role
       }
     })
   } catch (error) {
@@ -149,6 +153,7 @@ router.post('/forgot-password', async (req, res) => {
     })
   }
 })
+
 // Reset Password
 router.post('/reset-password', async (req, res) => {
   try {

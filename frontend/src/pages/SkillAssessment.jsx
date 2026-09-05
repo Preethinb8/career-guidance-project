@@ -69,6 +69,7 @@ function SkillAssessment() {
   const [completed, setCompleted] = useState(false)
   const [message, setMessage] = useState('')
   const [loading, setLoading] = useState(false)
+  const [aiRecommendation, setAiRecommendation] = useState('')
 
   const handleAnswer = async (option) => {
     console.log(
@@ -82,7 +83,6 @@ function SkillAssessment() {
 
     setAnswers(updatedAnswers)
 
-    // Move to next question
     if (currentQuestion < skillQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
       return
@@ -103,7 +103,6 @@ function SkillAssessment() {
       return
     }
 
-    // Calculate scores
     const technicalScore = updatedAnswers
       .slice(0, 2)
       .reduce(
@@ -195,9 +194,9 @@ function SkillAssessment() {
     setAnswers([])
     setCompleted(false)
     setMessage('')
+    setAiRecommendation('')
   }
 
-  // Completed screen
   if (completed) {
     const technicalScore = answers
       .slice(0, 2)
@@ -240,6 +239,16 @@ function SkillAssessment() {
 
         <p>{message}</p>
 
+        {aiRecommendation && (
+          <>
+            <h2>AI Career Recommendation</h2>
+
+            <p>
+              {aiRecommendation}
+            </p>
+          </>
+        )}
+
         <h2>Your Skill Scores</h2>
 
         <p>
@@ -276,7 +285,6 @@ function SkillAssessment() {
           Retake Skill Assessment
         </button>
 
-        {/* NEXT PHASE 1 STEP */}
         <button
           onClick={() => {
             window.location.href =

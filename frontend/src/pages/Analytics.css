@@ -1,0 +1,109 @@
+.analytics-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.analytics-page h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: #222;
+}
+
+.analytics-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.analytics-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.analytics-card h3 {
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.analytics-card p {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0;
+  color: #2563eb;
+}
+
+.analytics-section {
+  background: white;
+  padding: 25px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.analytics-section h2 {
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.career-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #f5f7fb;
+  border-radius: 8px;
+}
+
+.career-item span {
+  font-weight: 500;
+}
+
+.career-item strong {
+  font-size: 18px;
+  color: #2563eb;
+}
+
+.progress-item {
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #f5f7fb;
+  border-radius: 10px;
+}
+
+.progress-item h3 {
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.progress-item p {
+  margin: 8px 0;
+  color: #555;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+  .analytics-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .analytics-page {
+    padding: 20px;
+  }
+
+  .analytics-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .analytics-card p {
+    font-size: 28px;
+  }
+}

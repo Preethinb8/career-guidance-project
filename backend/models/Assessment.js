@@ -36,4 +36,6 @@ const assessmentSchema = new mongoose.Schema(
   }
 )
 
-module.exports = mongoose.model('Assessment', assessmentSchema)
+module.exports =
+  mongoose.models.Assessment ||
+  mongoose.model('Assessment', assessmentSchema)

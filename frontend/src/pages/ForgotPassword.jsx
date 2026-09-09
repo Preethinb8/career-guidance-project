@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import API_URL from '../api'
 
 function ForgotPassword() {
   const [email, setEmail] = useState('')
@@ -15,7 +16,7 @@ function ForgotPassword() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/auth/forgot-password',
+        `${API_URL}/api/auth/forgot-password`,
         {
           method: 'POST',
           headers: {

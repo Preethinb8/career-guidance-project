@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import API_URL from '../api'
 
 const questions = [
   {
@@ -196,7 +197,7 @@ function Assessment() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/assessment',
+        `${API_URL}/api/assessment`,
         {
           method: 'POST',
 
@@ -253,7 +254,7 @@ function Assessment() {
 
     try {
       const aiResponse = await fetch(
-        'http://localhost:5000/api/ai/career-recommendation',
+        `${API_URL}/api/ai/career-recommendation`,
         {
           method: 'POST',
 

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import API_URL from "../api";
 
 function ProgressTracking() {
-  const API_URL = "http://localhost:5000/api/progress";
+  const PROGRESS_API_URL = `${API_URL}/api/progress`;
 
   const [milestones, setMilestones] = useState([]);
   const [courses, setCourses] = useState([]);
@@ -26,7 +27,7 @@ function ProgressTracking() {
       }
 
       try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(PROGRESS_API_URL, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -108,16 +109,19 @@ function ProgressTracking() {
       try {
         setMessage("Saving milestone...");
 
-        const response = await fetch(`${API_URL}/milestone`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            milestone: selectedMilestone.title,
-          }),
-        });
+        const response = await fetch(
+          `${PROGRESS_API_URL}/milestone`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              milestone: selectedMilestone.title,
+            }),
+          }
+        );
 
         const data = await response.json();
 
@@ -185,16 +189,19 @@ function ProgressTracking() {
       try {
         setMessage("Saving course...");
 
-        const response = await fetch(`${API_URL}/course`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            course: selectedCourse.name,
-          }),
-        });
+        const response = await fetch(
+          `${PROGRESS_API_URL}/course`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              course: selectedCourse.name,
+            }),
+          }
+        );
 
         const data = await response.json();
 
@@ -240,7 +247,7 @@ function ProgressTracking() {
     }
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(PROGRESS_API_URL, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

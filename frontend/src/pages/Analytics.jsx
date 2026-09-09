@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Analytics.css'
+import API_URL from '../api'
 
 function Analytics() {
   const [userGrowth, setUserGrowth] = useState(null)
@@ -17,22 +18,22 @@ function Analytics() {
         }
 
         const userGrowthResponse = await fetch(
-          'http://localhost:5000/api/analytics/user-growth',
+          `${API_URL}/api/analytics/user-growth`,
           { headers }
         )
 
         const careersResponse = await fetch(
-          'http://localhost:5000/api/analytics/recommended-careers',
+          `${API_URL}/api/analytics/recommended-careers`,
           { headers }
         )
 
         const completionResponse = await fetch(
-          'http://localhost:5000/api/analytics/assessment-completion',
+          `${API_URL}/api/analytics/assessment-completion`,
           { headers }
         )
 
         const progressResponse = await fetch(
-          'http://localhost:5000/api/analytics/student-progress',
+          `${API_URL}/api/analytics/student-progress`,
           { headers }
         )
 

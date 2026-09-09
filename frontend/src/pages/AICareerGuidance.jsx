@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_URL from "../api";
 
 function AICareerGuidance() {
   const [career, setCareer] = useState("");
@@ -22,7 +23,7 @@ function AICareerGuidance() {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/ai/career-guidance",
+        `${API_URL}/api/ai/career-guidance`,
         {
           method: "POST",
           headers: {

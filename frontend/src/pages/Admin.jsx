@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import API_URL from '../api'
 
 function Admin() {
   const [users, setUsers] = useState([])
@@ -19,7 +20,7 @@ function Admin() {
 
         // Users
         const userResponse = await fetch(
-          'http://localhost:5000/api/admin/users',
+          `${API_URL}/api/admin/users`,
           { headers }
         )
 
@@ -33,7 +34,7 @@ function Admin() {
 
         // Assessments
         const assessmentResponse = await fetch(
-          'http://localhost:5000/api/admin/assessments',
+          `${API_URL}/api/admin/assessments`,
           { headers }
         )
 
@@ -49,7 +50,7 @@ function Admin() {
 
         // Career Paths
         const careerResponse = await fetch(
-          'http://localhost:5000/api/admin/career-paths',
+          `${API_URL}/api/admin/career-paths`,
           { headers }
         )
 
@@ -65,7 +66,7 @@ function Admin() {
 
         // Analytics and Reports
         const analyticsResponse = await fetch(
-          'http://localhost:5000/api/admin/analytics',
+          `${API_URL}/api/admin/analytics`,
           { headers }
         )
 

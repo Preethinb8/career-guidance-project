@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Assessment.css'
+import API_URL from '../api'
 
 function Recommendations() {
   const [recommendations, setRecommendations] = useState([])
@@ -19,7 +20,7 @@ function Recommendations() {
         }
 
         const response = await fetch(
-          `http://localhost:5000/api/recommendations/${user.id}`,
+          `${API_URL}/api/recommendations/${user.id}`,
           {
             method: 'GET',
             headers: {

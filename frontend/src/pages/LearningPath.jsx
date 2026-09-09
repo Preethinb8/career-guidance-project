@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_URL from "../api";
 
 function LearningPath() {
   const [career, setCareer] = useState("");
@@ -26,7 +27,7 @@ function LearningPath() {
         .filter((skill) => skill);
 
       const response = await fetch(
-        "http://localhost:5000/api/ai/learning-path",
+        `${API_URL}/api/ai/learning-path`,
         {
           method: "POST",
           headers: {

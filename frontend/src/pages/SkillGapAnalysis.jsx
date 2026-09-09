@@ -1,4 +1,5 @@
 import { useState } from "react";
+import API_URL from "../api";
 
 function SkillGapAnalysis() {
   const [career, setCareer] = useState("");
@@ -38,7 +39,7 @@ function SkillGapAnalysis() {
         .filter((skill) => skill);
 
       const response = await fetch(
-        "http://localhost:5000/api/ai/skill-gap",
+        `${API_URL}/api/ai/skill-gap`,
         {
           method: "POST",
           headers: {

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import API_URL from '../api'
 
 const skillQuestions = [
   {
@@ -142,7 +143,7 @@ function SkillAssessment() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/skills',
+        `${API_URL}/api/skills`,
         {
           method: 'POST',
           headers: {
@@ -173,7 +174,7 @@ function SkillAssessment() {
 
       setMessage(
         data.message ||
-          'Failed to save skill assessment.'
+        'Failed to save skill assessment.'
       )
     } catch (error) {
       console.error(

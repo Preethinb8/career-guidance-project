@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import API_URL from '../api'
 
 function Profile() {
   const user = JSON.parse(localStorage.getItem('user'))
@@ -57,7 +58,7 @@ function Profile() {
 
     try {
       const response = await fetch(
-        'http://localhost:5000/api/profile',
+        `${API_URL}/api/profile`,
         {
           method: 'POST',
 

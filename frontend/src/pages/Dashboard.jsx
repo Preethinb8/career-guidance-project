@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './Dashboard.css'
+import API_URL from '../api'
 
 function Dashboard() {
   const [recommendations, setRecommendations] = useState([])
@@ -26,7 +27,7 @@ function Dashboard() {
         }
 
         const recommendationResponse = await fetch(
-          `http://localhost:5000/api/recommendations/${user.id}`,
+          `${API_URL}/api/recommendations/${user.id}`,
           {
             method: 'GET',
             headers: authHeaders
@@ -34,7 +35,7 @@ function Dashboard() {
         )
 
         const profileResponse = await fetch(
-          `http://localhost:5000/api/profile/${user.id}`,
+          `${API_URL}/api/profile/${user.id}`,
           {
             method: 'GET',
             headers: authHeaders
@@ -42,7 +43,7 @@ function Dashboard() {
         )
 
         const skillResponse = await fetch(
-          `http://localhost:5000/api/skills/${user.id}`,
+          `${API_URL}/api/skills/${user.id}`,
           {
             method: 'GET',
             headers: authHeaders
@@ -50,7 +51,7 @@ function Dashboard() {
         )
 
         const assessmentResponse = await fetch(
-          `http://localhost:5000/api/assessment/${user.id}`,
+          `${API_URL}/api/assessment/${user.id}`,
           {
             method: 'GET',
             headers: authHeaders
